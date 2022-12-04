@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnBoarding.OnBoarding1">
+
+    <ImageView
+        android:id="@+id/imageViewBoarding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35000002"
+        app:srcCompat="@drawable/on_boarding_1_3" />
+
+    <TextView
+        android:id="@+id/textViewBoarding"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="#0E9CF9"
+        android:text="Fast reservation with technicians and craftsmen"
+        android:lines="2"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewBoarding"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBoarding"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBoarding" />
+
+    <Button
+        android:id="@+id/btn_Next_Page"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:textStyle="bold"
+        android:textSize="17sp"
+
+        android:background="@drawable/btn_shape"
+        android:backgroundTint="@drawable/btn_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBoarding" />
+</androidx.constraintlayout.widget.ConstraintLayout>
