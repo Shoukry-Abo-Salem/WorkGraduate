@@ -6,34 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Register">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_Register"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/service_Provider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Service provider" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/customer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Customer" />
-
-    </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="409dp"
-        android:layout_height="681dp"
+        android:id="@+id/viewPager_Register"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout_Register" />
+        app:layout_constraintTop_toBottomOf="@+id/register_nav" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/register_nav"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:menu="@menu/nav_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="130dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

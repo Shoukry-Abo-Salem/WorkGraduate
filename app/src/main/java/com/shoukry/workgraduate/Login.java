@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -37,6 +38,7 @@ public class Login extends AppCompatActivity {
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
     EditText email,password;
+    TextView signup;
     Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +55,11 @@ public class Login extends AppCompatActivity {
         adapter = new LoginFragmentAdapter(this,fragmentArrayList);
         binding.viewPager.setAdapter(adapter);
 
+        signup.setOnClickListener(view ->{
+            startActivity(new Intent(getApplicationContext() ,Register.class));
+        });
 
-
-        binding.navBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        binding.loginNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int  itemId = item.getItemId();
@@ -66,13 +70,16 @@ public class Login extends AppCompatActivity {
                 }else if (itemId == R.id.customer){
                     binding.viewPager.setCurrentItem(1);
                 }
+
                 login.setOnClickListener(view ->{
                     if (itemId == R.id.provider) {
                         Log.d("customer", "customer");
+                        requestQueue = Volley.newRequestQueue(Login.this);
+                        setLoginCustomer();
                     }else if (itemId == R.id.customer){
                         Log.d("provider", "provider");
                         requestQueue = Volley.newRequestQueue(Login.this);
-                        setLogin();
+                        setLoginProvider();
                     }
                 });
 
@@ -85,13 +92,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                binding.navBar.getMenu().getItem(position).setChecked(true);
+                binding.loginNav.getMenu().getItem(position).setChecked(true);
             }
         });
 
     }
     //    Login Delivery
-    void setLogin(){
+    void setLoginProvider(){
         JSONObject jsonObject = new JSONObject();
         email = findViewById(R.id.edText_Email);
         password = findViewById(R.id.edText_Password);
@@ -109,6 +116,43 @@ public class Login extends AppCompatActivity {
                             finish();
                         }else{
                         Toast.makeText(Login.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("sad3","Error");
+                    Toast.makeText(Login.this, "Error in Email or Password", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    //      Login Customer
+    void setLoginCustomer(){
+        JSONObject jsonObject = new JSONObject();
+        email = findViewById(R.id.edText_Email);
+        password = findViewById(R.id.edText_Password);
+        try {
+            jsonObject.put("email",email.getText().toString());
+            jsonObject.put("password",password.getText().toString());
+
+            jsonObjectRequest = new JsonObjectRequest(POST, "https://studentucas.awamr.com/api/auth/login/user", jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        if (response.getBoolean("success") == true){
+                            Toast.makeText(Login.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Login.this,MainActivity.class));
+                            finish();
+                        }else{
+                            Toast.makeText(Login.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
