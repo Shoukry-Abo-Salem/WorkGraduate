@@ -1,5 +1,6 @@
 package com.shoukry.workgraduate;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.shoukry.workgraduate.databinding.ActivityRegisterBinding;
 
 public class RegisterFragment extends Fragment {
 

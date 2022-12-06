@@ -55,6 +55,7 @@ public class Login extends AppCompatActivity {
         adapter = new LoginFragmentAdapter(this,fragmentArrayList);
         binding.viewPager.setAdapter(adapter);
 
+        signup = findViewById(R.id.signup);
         signup.setOnClickListener(view ->{
             startActivity(new Intent(getApplicationContext() ,Register.class));
         });

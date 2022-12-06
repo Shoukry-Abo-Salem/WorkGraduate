@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        binding.text.setOnClickListener(view ->{
-            startActivity(new Intent(MainActivity.this,SplashScreen.class));
-        });
+
     }
 }
