@@ -18,10 +18,13 @@ public class LoginFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    login.findViewById(R.id.btn_Login);
-    login.setOnClickListener(view ->{
+        //Login
+//    login.findViewById(R.id.btn_Login);
+//    login.setOnClickListener(view ->{
+//
+//    });
 
-    });
+
 
     }
 
