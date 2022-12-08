@@ -68,8 +68,6 @@
         android:layout_height="wrap_content"
         android:text="SIGN UP"
         android:textStyle="bold"
-        android:textColor="#4200D8"
-        android:backgroundTint="@color/white"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />

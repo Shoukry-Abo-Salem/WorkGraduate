@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/service" android:title="Service" android:checked="true" />
-    <item android:id="@+id/orders" android:title="Orders" android:checked="false" />
-    <item android:id="@+id/user" android:title="User" android:checked="false" />
-    <item android:id="@+id/more" android:title="More" android:checked="false" />
+
+    <item android:id="@+id/service"
+        android:title="Service" />
+
+    <item android:id="@+id/orders"
+        android:title="Orders" />
+
+    <item android:id="@+id/user"
+        android:title="User" />
+
+    <item android:id="@+id/more"
+        android:title="More"
+        android:icon="@drawable/ic_more_horiz"/>
+
+
 </menu>
