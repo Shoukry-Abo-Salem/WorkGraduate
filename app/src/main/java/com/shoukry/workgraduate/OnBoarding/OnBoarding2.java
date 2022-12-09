@@ -18,6 +18,7 @@ public class OnBoarding2 extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnNextPage.setOnClickListener(view ->{
+
             startActivity(new Intent(getApplicationContext(),OnBoarding3.class));
         });
     }

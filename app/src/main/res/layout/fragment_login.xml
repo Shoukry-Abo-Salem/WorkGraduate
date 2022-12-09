@@ -67,6 +67,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SIGN UP"
+        android:textColor="@color/purple_700"
+        android:backgroundTint="@color/white"
         android:textStyle="bold"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
@@ -74,12 +76,13 @@
 
     <Button
         android:id="@+id/btn_Login"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Login"
         android:background="@drawable/btn_shape"
+        android:text="Login"
         app:layout_constraintBottom_toBottomOf="@+id/signup"
         app:layout_constraintEnd_toEndOf="@+id/forgot_Password"
+        app:layout_constraintStart_toStartOf="@+id/forgot_Password"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <TextView

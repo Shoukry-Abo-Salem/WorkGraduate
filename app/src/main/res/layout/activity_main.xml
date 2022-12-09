@@ -11,47 +11,21 @@
         android:id="@+id/viewPager_Home"
         android:layout_width="match_parent"
         android:layout_height="660dp"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayout_Home"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_Nav_Home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
     </androidx.viewpager2.widget.ViewPager2>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_Home"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_Nav_Home"
+        android:layout_width="409dp"
+        android:layout_height="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/service"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Service"
-            android:icon="@drawable/img"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/orders"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Orders" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="More"
-            android:icon="@drawable/ic_more_horiz"/>
-    </com.google.android.material.tabs.TabLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/main_nav_menu"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

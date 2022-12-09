@@ -23,6 +23,7 @@
         android:hint="Full Name"
         app:boxStrokeColor="#0E4DFB"
         app:hintTextColor="#0E4DFB"
+        android:textColorHint="@color/black"
         app:boxStrokeWidth="1dp"
         app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,8 +34,9 @@
             android:id="@+id/edText_FullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/black"
             android:textColor="@color/black"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,6 +47,7 @@
         android:hint="Email"
         android:layout_marginTop="10dp"
         app:boxStrokeColor="#0E4DFB"
+        android:textColorHint="@color/black"
         app:boxStrokeWidth="1dp"
         app:endIconMode="custom"
         app:hintTextColor="#0E4DFB"
@@ -56,8 +59,10 @@
             android:id="@+id/edit_txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/black"
             android:textColor="@color/black"
-            android:inputType="textEmailAddress" />
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,6 +73,7 @@
         android:hint="5000|"
         android:layout_marginTop="10dp"
         app:boxStrokeColor="#0E4DFB"
+        android:textColorHint="@color/black"
         app:hintTextColor="#0E4DFB"
         app:boxStrokeWidth="1dp"
         app:endIconMode="custom"
@@ -78,9 +84,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_txt_PhoneNumber"
             android:layout_width="match_parent"
-            android:textColor="@color/black"
             android:layout_height="wrap_content"
-            android:inputType="date" />
+            android:inputType="number"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -89,6 +97,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Password"
+        android:textColorHint="@color/black"
         android:layout_marginTop="10dp"
         app:boxStrokeColor="#0E4DFB"
         app:boxStrokeWidth="1dp"
@@ -104,11 +113,11 @@
             android:id="@+id/edit_txt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#70CACACA"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:background="#70CACACA"
-            android:textColorHint="#4E342E"
-            tools:ignore="TextContrastCheck" />
+            android:textColorHint="@color/black"
+            tools:ignore="TextContrastCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
@@ -129,11 +138,12 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="13sp"
         android:layout_marginTop="8dp"
         android:text="I Read and Accept Home Service Terms and Conditions"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/main_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/main_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/main_spinner"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -152,7 +162,7 @@
         android:layout_height="wrap_content"
         android:text="SIGN IN"
         android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -160,8 +170,9 @@
         android:id="@+id/btn_SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
         android:background="@drawable/btn_shape"
+        android:text="Sign Up"
+        android:textColor="#90CAF9"
         app:layout_constraintBottom_toBottomOf="@+id/text_SignIn"
         app:layout_constraintEnd_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toTopOf="@+id/textView" />

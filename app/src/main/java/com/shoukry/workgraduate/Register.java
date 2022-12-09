@@ -150,7 +150,10 @@ public class Register extends AppCompatActivity {
     //   Register Customer
     void setRegisterCustomer(){
         JSONObject jsonObject = new JSONObject();
-
+        fullName = findViewById(R.id.edText_FullName);
+        email = findViewById(R.id.edit_txt_email);
+        phoneNumber = findViewById(R.id.edit_txt_PhoneNumber);
+        password = findViewById(R.id.edit_txt_password);
         try {
             jsonObject.put("name",fullName.getText().toString());
             jsonObject.put("email",email.getText().toString());

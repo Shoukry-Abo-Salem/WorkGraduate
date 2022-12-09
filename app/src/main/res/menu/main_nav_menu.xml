@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item android:id="@+id/service" android:title="Service" android:icon="@drawable/img" />
-    <item android:id="@+id/orders" android:title="Orders" android:icon="@drawable/img" android:checked="true"/>
+    <item android:id="@+id/orders" android:title="Orders" android:icon="@drawable/img" />
     <item android:id="@+id/user" android:title="User" android:icon="@drawable/img"/>
-    <item android:id="@+id/more" android:title="More" android:icon="@drawable/img"/>
+    <item android:id="@+id/more" android:title="More" android:icon="@drawable/ic_more_horiz"/>
 </menu>
