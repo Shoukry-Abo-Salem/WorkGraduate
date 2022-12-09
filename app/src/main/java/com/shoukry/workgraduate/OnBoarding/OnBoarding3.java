@@ -21,6 +21,7 @@ public class OnBoarding3 extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnNextPage.setOnClickListener(view -> {
+
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
 
