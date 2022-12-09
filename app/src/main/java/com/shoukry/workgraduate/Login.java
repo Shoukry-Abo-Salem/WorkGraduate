@@ -89,6 +89,16 @@ public class Login extends AppCompatActivity {
                     }
                 });
 
+                signup = findViewById(R.id.signup);
+                signup.setOnClickListener(view ->{
+                    if (itemId == R.id.provider){
+                        startActivity(new Intent(getApplicationContext(),Register.class));
+                    }else if (itemId == R.id.customer){
+                        startActivity(new Intent(getApplicationContext(),Register.class));
+//                        binding.viewPager.setCurrentItem(1);
+                    }
+                });
+
 
                 return false;
             }

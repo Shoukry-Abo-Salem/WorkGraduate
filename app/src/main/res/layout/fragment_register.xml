@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="Full Name"
-        app:boxStrokeColor="#FFFFFF"
+        app:boxStrokeColor="#0E4DFB"
+        app:hintTextColor="#0E4DFB"
         app:boxStrokeWidth="1dp"
         app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +33,7 @@
             android:id="@+id/edText_FullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,10 +44,10 @@
         android:layout_height="wrap_content"
         android:hint="Email"
         android:layout_marginTop="10dp"
-        app:boxStrokeColor="#FFFFFF"
+        app:boxStrokeColor="#0E4DFB"
         app:boxStrokeWidth="1dp"
         app:endIconMode="custom"
-        app:hintTextColor="#FFFFFF"
+        app:hintTextColor="#0E4DFB"
         app:layout_constraintEnd_toEndOf="@+id/edText_FullNameLayout"
         app:layout_constraintStart_toStartOf="@+id/edText_FullNameLayout"
         app:layout_constraintTop_toBottomOf="@+id/edText_FullNameLayout">
@@ -54,6 +56,7 @@
             android:id="@+id/edit_txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,7 +67,8 @@
         android:layout_height="wrap_content"
         android:hint="5000|"
         android:layout_marginTop="10dp"
-        app:boxStrokeColor="#FFFFFF"
+        app:boxStrokeColor="#0E4DFB"
+        app:hintTextColor="#0E4DFB"
         app:boxStrokeWidth="1dp"
         app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="@+id/layout_Email"
@@ -74,6 +78,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_txt_PhoneNumber"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,11 +90,12 @@
         android:layout_height="wrap_content"
         android:hint="Password"
         android:layout_marginTop="10dp"
-        app:boxStrokeColor="#5E5E5E"
+        app:boxStrokeColor="#0E4DFB"
+        app:boxStrokeWidth="1dp"
         app:counterEnabled="true"
         app:counterMaxLength="30"
         app:endIconMode="password_toggle"
-        app:hintTextColor="#C8FFFFFF"
+        app:hintTextColor="#0E4DFB"
         app:layout_constraintEnd_toEndOf="@+id/layout_PhoneNumber"
         app:layout_constraintStart_toStartOf="@+id/layout_PhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/layout_PhoneNumber">
@@ -99,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:textColor="@color/black"
             android:background="#70CACACA"
             android:textColorHint="#4E342E"
             tools:ignore="TextContrastCheck" />
@@ -135,18 +142,17 @@
         android:text="Have Account?"
         android:textColor="@color/black"
         android:textSize="17sp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@+id/checkBox"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
-    <TextView
+    <Button
         android:id="@+id/text_SignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SIGN IN"
         android:textStyle="bold"
         android:textSize="18dp"
-        android:textColor="@color/purple_700"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

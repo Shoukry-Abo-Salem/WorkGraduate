@@ -5,6 +5,7 @@ import static com.android.volley.Request.Method.POST;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,9 +38,10 @@ import java.util.ArrayList;
 public class Register extends AppCompatActivity {
 
     ActivityRegisterBinding binding;
+    LoginFragmentAdapter adapter;
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
-    Button login;
+    Button signUp;
     TextView signIn;
     EditText fullName,email,phoneNumber,password;
 
@@ -55,7 +57,7 @@ public class Register extends AppCompatActivity {
         fragmentArrayList.add(new RegisterFragment());
         fragmentArrayList.add(new RegisterFragment());
 
-        LoginFragmentAdapter adapter = new LoginFragmentAdapter(this,fragmentArrayList);
+        adapter = new LoginFragmentAdapter(this,fragmentArrayList);
         binding.viewPagerRegister.setAdapter(adapter);
 
         binding.imageViewBack.setOnClickListener(view ->{
@@ -67,13 +69,15 @@ public class Register extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
+
                 if (itemId == R.id.provider){
                     binding.viewPagerRegister.setCurrentItem(0);
                 }else if (itemId == R.id.customer){
                     binding.viewPagerRegister.setCurrentItem(1);
                 }
 
-                login.setOnClickListener(view ->{
+                signUp = findViewById(R.id.btn_SignUp);
+                signUp.setOnClickListener(view ->{
                     if (itemId == R.id.provider) {
                         Log.d("customer", "customer");
                         requestQueue = Volley.newRequestQueue(Register.this);
@@ -81,10 +85,18 @@ public class Register extends AppCompatActivity {
                     }else if (itemId == R.id.customer){
                         Log.d("provider", "provider");
                         requestQueue = Volley.newRequestQueue(Register.this);
-//                        setRegisterCustomer();
+                        setRegisterCustomer();
                     }
                 });
                 return false;
+            }
+        });
+
+        binding.viewPagerRegister.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                binding.registerNav.getMenu().getItem(position).setChecked(true);
             }
         });
 
@@ -101,13 +113,55 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.edit_txt_password);
 
         try {
+            jsonObject.put("name",fullName.getText().toString());
+            jsonObject.put("email",email.getText().toString());
+            jsonObject.put("phone",phoneNumber.getText().toString());
+            jsonObject.put("work_id",1);
+            jsonObject.put("password",password.getText().toString());
+
+            jsonObjectRequest = new JsonObjectRequest(POST, "https://studentucas.awamr.com/api/auth/register/delivery", jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        if (response.getBoolean("success") == true){
+                            Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Register.this,MainActivity.class));
+                            finish();
+                        }else{
+                            Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("sad3","Error");
+                    Toast.makeText(Register.this, "Error Register", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    //   Register Customer
+    void setRegisterCustomer(){
+        JSONObject jsonObject = new JSONObject();
+        fullName = findViewById(R.id.edText_FullName);
+        email = findViewById(R.id.edit_txt_email);
+        phoneNumber = findViewById(R.id.edit_txt_PhoneNumber);
+        password = findViewById(R.id.edit_txt_password);
+
+        try {
             jsonObject.put("name",fullName);
             jsonObject.put("email",email);
             jsonObject.put("phone",phoneNumber);
-            jsonObject.put("work_id",1);
             jsonObject.put("password",password);
 
-            jsonObjectRequest = new JsonObjectRequest(POST, "https://studentucas.awamr.com/api/auth/register/delivery", jsonObject, new Response.Listener<JSONObject>() {
+            jsonObjectRequest = new JsonObjectRequest(POST, "https://studentucas.awamr.com/api/auth/register/user", jsonObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
