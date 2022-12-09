@@ -150,16 +150,12 @@ public class Register extends AppCompatActivity {
     //   Register Customer
     void setRegisterCustomer(){
         JSONObject jsonObject = new JSONObject();
-        fullName = findViewById(R.id.edText_FullName);
-        email = findViewById(R.id.edit_txt_email);
-        phoneNumber = findViewById(R.id.edit_txt_PhoneNumber);
-        password = findViewById(R.id.edit_txt_password);
 
         try {
-            jsonObject.put("name",fullName);
-            jsonObject.put("email",email);
-            jsonObject.put("phone",phoneNumber);
-            jsonObject.put("password",password);
+            jsonObject.put("name",fullName.getText().toString());
+            jsonObject.put("email",email.getText().toString());
+            jsonObject.put("phone",phoneNumber.getText().toString());
+            jsonObject.put("password",password.getText().toString());
 
             jsonObjectRequest = new JsonObjectRequest(POST, "https://studentucas.awamr.com/api/auth/register/user", jsonObject, new Response.Listener<JSONObject>() {
                 @Override
