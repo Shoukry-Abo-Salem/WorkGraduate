@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,8 +39,7 @@ public class Login extends AppCompatActivity {
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
     EditText email,password;
-    TextView signup;
-    Button login;
+    Button login,signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,8 @@ public class Login extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(Login.this);
 
+
+
         ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
         fragmentArrayList.add(new LoginFragment());
         fragmentArrayList.add(new LoginFragment());
@@ -55,10 +57,13 @@ public class Login extends AppCompatActivity {
         adapter = new LoginFragmentAdapter(this,fragmentArrayList);
         binding.viewPager.setAdapter(adapter);
 
-        signup = findViewById(R.id.signup);
-        signup.setOnClickListener(view ->{
-            startActivity(new Intent(getApplicationContext() ,Register.class));
-        });
+//        signup = findViewById(R.id.signup);
+//        signup.setOnClickListener(view ->{
+//            startActivity(new Intent(Login.this, Register.class));
+//        });
+
+
+
 
         binding.loginNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -83,6 +88,7 @@ public class Login extends AppCompatActivity {
                         setLoginProvider();
                     }
                 });
+
 
                 return false;
             }
