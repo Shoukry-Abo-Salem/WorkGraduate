@@ -14,6 +14,7 @@ public class OnBoarding3 extends AppCompatActivity {
 
 
     ActivityOnBoarding3Binding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

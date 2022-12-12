@@ -1,5 +1,6 @@
 package com.shoukry.workgraduate;
 
+import static com.android.volley.Request.Method.GET;
 import static com.android.volley.Request.Method.POST;
 
 import androidx.annotation.NonNull;
@@ -9,10 +10,12 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -23,6 +26,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
@@ -30,6 +34,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.shoukry.workgraduate.AdapterFragments.LoginFragmentAdapter;
 import com.shoukry.workgraduate.databinding.ActivityRegisterBinding;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,8 +46,15 @@ public class Register extends AppCompatActivity {
     LoginFragmentAdapter adapter;
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
+    String nameOfWork;
+    SharedPreferences shared;
+    SharedPreferences.Editor editor;
+    public static int USER_REGISTER_KEY = 0;
+    public static int PROVIDER_REGISTER_KEY = 0;
+    String id;
     Button signUp;
     TextView signIn;
+    Spinner spinner;
     EditText fullName,email,phoneNumber,password;
 
     @Override
@@ -51,7 +63,18 @@ public class Register extends AppCompatActivity {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+//        signIn = findViewById(R.id.text_SignIn);
+//        signIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(Register.this,Login.class));
+//            }
+//        });
+
         requestQueue = Volley.newRequestQueue(Register.this);
+        ArrayList<String> arrayListSpinner = new ArrayList<>();
+//        ArrayAdapter spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,arrayListSpinner);
+//        spinner.setAdapter(spinnerAdapter);
 
         ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
         fragmentArrayList.add(new RegisterFragment());
@@ -70,10 +93,17 @@ public class Register extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
+                    spinner = findViewById(R.id.main_spinner);
                 if (itemId == R.id.provider){
                     binding.viewPagerRegister.setCurrentItem(0);
+                    getAllWorks();
+                    spinner.setVisibility(View.VISIBLE);
+                    Toast.makeText(Register.this, ""+nameOfWork+id, Toast.LENGTH_SHORT).show();
                 }else if (itemId == R.id.customer){
                     binding.viewPagerRegister.setCurrentItem(1);
+                    spinner.setVisibility(View.INVISIBLE);
+
+//                    arrayListSpinner.add(nameOfWork);
                 }
 
                 signUp = findViewById(R.id.btn_SignUp);
@@ -124,6 +154,9 @@ public class Register extends AppCompatActivity {
                 public void onResponse(JSONObject response) {
                     try {
                         if (response.getBoolean("success") == true){
+                            shared = getSharedPreferences(String.valueOf(PROVIDER_REGISTER_KEY),MODE_PRIVATE);
+                            editor.putInt(String.valueOf(PROVIDER_REGISTER_KEY),1);
+                            editor.commit();
                             Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Register.this,MainActivity.class));
                             finish();
@@ -186,5 +219,32 @@ public class Register extends AppCompatActivity {
             e.printStackTrace();
         }
         requestQueue.add(jsonObjectRequest);
+    }
+
+    //   Get All Works
+    void getAllWorks(){
+        StringRequest stringRequest = new StringRequest(GET, "https://studentucas.awamr.com/api/all/works", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    JSONObject jsonObject1;
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        jsonObject1=jsonArray.getJSONObject(i);
+                        nameOfWork = jsonObject1.getString("name");
+                        id = jsonObject1.getString("id");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(stringRequest);
     }
 }

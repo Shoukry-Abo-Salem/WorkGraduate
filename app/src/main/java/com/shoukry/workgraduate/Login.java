@@ -46,8 +46,8 @@ public class Login extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+//        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         requestQueue = Volley.newRequestQueue(Login.this);
-
 
 
         ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
@@ -128,6 +128,8 @@ public class Login extends AppCompatActivity {
                 public void onResponse(JSONObject response) {
                     try {
                         if (response.getBoolean("success") == true){
+
+
                             Toast.makeText(Login.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this,MainActivity.class));
                             finish();
