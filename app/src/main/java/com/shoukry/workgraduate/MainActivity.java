@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
         fragmentArrayList.add(new ServiceFragment());
-        fragmentArrayList.add(new ServiceFragment());
+        fragmentArrayList.add(new OrdersFragment());
 
         adapter = new LoginFragmentAdapter(this,fragmentArrayList);
         binding.viewPagerHome.setAdapter(adapter);

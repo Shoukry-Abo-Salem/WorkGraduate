@@ -29,7 +29,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_Nav_Home"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="69dp"
         android:background="#6FC8FB"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,25 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/main_nav_menu"/>
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/notification" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
