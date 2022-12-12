@@ -154,9 +154,7 @@ public class Register extends AppCompatActivity {
                 public void onResponse(JSONObject response) {
                     try {
                         if (response.getBoolean("success") == true){
-                            shared = getSharedPreferences(String.valueOf(PROVIDER_REGISTER_KEY),MODE_PRIVATE);
-                            editor.putInt(String.valueOf(PROVIDER_REGISTER_KEY),1);
-                            editor.commit();
+
                             Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Register.this,MainActivity.class));
                             finish();

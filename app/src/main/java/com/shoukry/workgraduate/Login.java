@@ -7,12 +7,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,16 +41,18 @@ public class Login extends AppCompatActivity {
     ActivityLoginBinding binding;
     LoginFragmentAdapter adapter;
     RequestQueue requestQueue;
+    SharedPreferences shared;
+    SharedPreferences.Editor editor;
     JsonObjectRequest jsonObjectRequest;
     EditText email,password;
     Button login,signup;
+    CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         requestQueue = Volley.newRequestQueue(Login.this);
 
 
@@ -128,8 +134,15 @@ public class Login extends AppCompatActivity {
                 public void onResponse(JSONObject response) {
                     try {
                         if (response.getBoolean("success") == true){
-
-
+                            checkBox = findViewById(R.id.checkBox_Remember_me);
+                            if (checkBox.isChecked()){
+                            shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                            editor = shared.edit();
+                            editor.putInt("provider",1);
+                            editor.commit();
+//                            shared.getInt("provider",0);
+                            }
+//                            Toast.makeText(Login.this, ""+shared.getInt("provider",0), Toast.LENGTH_SHORT).show();
                             Toast.makeText(Login.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this,MainActivity.class));
                             finish();
@@ -167,6 +180,18 @@ public class Login extends AppCompatActivity {
                 public void onResponse(JSONObject response) {
                     try {
                         if (response.getBoolean("success") == true){
+                            checkBox = findViewById(R.id.checkBox_Remember_me);
+                            if (checkBox.isChecked()){
+                                shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                                editor = shared.edit();
+                                editor.putInt("provider",1);
+                                editor.commit();
+                            }
+//                            shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+//                            editor = shared.edit();
+//                            editor.putInt("provider",2);
+//                            editor.commit();
+//                            shared.getInt("provider",0);
                             Toast.makeText(Login.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this,MainActivity.class));
                             finish();
