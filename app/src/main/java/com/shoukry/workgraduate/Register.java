@@ -32,6 +32,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.shoukry.workgraduate.AdapterFragments.LoginFragmentAdapter;
+import com.shoukry.workgraduate.OnBoarding.OnBoarding3;
 import com.shoukry.workgraduate.databinding.ActivityRegisterBinding;
 
 import org.json.JSONArray;
@@ -84,7 +85,9 @@ public class Register extends AppCompatActivity {
         binding.viewPagerRegister.setAdapter(adapter);
 
         binding.imageViewBack.setOnClickListener(view ->{
-            startActivity(new Intent(getApplicationContext(), Login.class));
+//            startActivity(new Intent(getApplicationContext(), Login.class));
+//            finish();
+            startActivity(new Intent(getApplicationContext(), OnBoarding3.class));
             finish();
         });
 

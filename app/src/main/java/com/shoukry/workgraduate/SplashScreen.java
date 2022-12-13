@@ -1,10 +1,7 @@
 package com.shoukry.workgraduate;
 
-import static com.shoukry.workgraduate.Register.PROVIDER_REGISTER_KEY;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,8 +9,9 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.shoukry.workgraduate.OnBoarding.OnBoarding1;
 import com.shoukry.workgraduate.OnBoarding.OnBoarding2;
+import com.shoukry.workgraduate.OnBoarding.OnBoarding3;
+import com.shoukry.workgraduate.OnBoarding.OnBoardingOne;
 import com.shoukry.workgraduate.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreen extends AppCompatActivity {
@@ -40,9 +38,11 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (boarding == 0){
-                    startActivity(new Intent(SplashScreen.this, OnBoarding2.class));
+                if (login == 1){
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
+                }else{
+                    startActivity(new Intent(getApplicationContext(),Login.class));
                 }
             }
         },1500);
