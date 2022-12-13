@@ -87,7 +87,7 @@ public class Register extends AppCompatActivity {
         binding.imageViewBack.setOnClickListener(view ->{
 //            startActivity(new Intent(getApplicationContext(), Login.class));
 //            finish();
-            startActivity(new Intent(getApplicationContext(), OnBoarding3.class));
+            startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
         });
 

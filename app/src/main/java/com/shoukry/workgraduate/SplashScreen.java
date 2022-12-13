@@ -9,9 +9,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.shoukry.workgraduate.OnBoarding.OnBoarding2;
-import com.shoukry.workgraduate.OnBoarding.OnBoarding3;
-import com.shoukry.workgraduate.OnBoarding.OnBoardingOne;
+
 import com.shoukry.workgraduate.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreen extends AppCompatActivity {
