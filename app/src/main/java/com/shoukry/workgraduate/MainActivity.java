@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                binding.bottomNavHome.getMenu().getItem(position).setChecked(true);
+                binding.bottomNavHome.getMenu().getItem(position).setChecked(false);
             }
         });
     }

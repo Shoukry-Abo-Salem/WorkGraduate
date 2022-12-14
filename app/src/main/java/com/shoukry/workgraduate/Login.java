@@ -184,7 +184,7 @@ public class Login extends AppCompatActivity {
                             if (checkBox.isChecked()){
                                 shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                                 editor = shared.edit();
-                                editor.putInt("provider",1);
+                                editor.putInt("customer",1);
                                 editor.commit();
                             }
 //                            shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());

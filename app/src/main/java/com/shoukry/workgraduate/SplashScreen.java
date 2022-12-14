@@ -26,7 +26,8 @@ public class SplashScreen extends AppCompatActivity {
         shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = shared.edit();
 
-        int login = shared.getInt("provider",0);
+        int loginProvider = shared.getInt("provider",0);
+        int loginCustomer = shared.getInt("customer",0);
         int boarding = shared.getInt("isBoarding",0);
 //        editor.remove("provider");
 //        editor.commit();
@@ -36,11 +37,17 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (login == 1){
+                if (loginProvider == 1){
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
+                    Toast.makeText(SplashScreen.this, "Provider"+loginProvider, Toast.LENGTH_LONG).show();
+                }else if (loginCustomer == 1){
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    finish();
+                    Toast.makeText(SplashScreen.this, "Customer"+loginCustomer, Toast.LENGTH_LONG).show();
                 }else{
                     startActivity(new Intent(getApplicationContext(),Login.class));
+                    finish();
                 }
             }
         },1500);

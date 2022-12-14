@@ -8,9 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shoukry.workgraduate.databinding.FragmentOrdersBinding;
+
 
 public class OrdersFragment extends Fragment {
-
 
     public OrdersFragment() {
         // Required empty public constructor
@@ -27,6 +28,8 @@ public class OrdersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_orders, container, false);
+        FragmentOrdersBinding binding = FragmentOrdersBinding.inflate(inflater,container,false);
+//        binding.ordersViewPager.
+        return binding.getRoot();
     }
 }
