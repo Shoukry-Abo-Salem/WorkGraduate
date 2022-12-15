@@ -47,12 +47,10 @@ public class Register extends AppCompatActivity {
     LoginFragmentAdapter adapter;
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
-    String nameOfWork;
     SharedPreferences shared;
     SharedPreferences.Editor editor;
     public static int USER_REGISTER_KEY = 0;
     public static int PROVIDER_REGISTER_KEY = 0;
-    String id;
     Button signUp;
     TextView signIn;
     Spinner spinner;
@@ -99,9 +97,9 @@ public class Register extends AppCompatActivity {
                     spinner = findViewById(R.id.main_spinner);
                 if (itemId == R.id.provider){
                     binding.viewPagerRegister.setCurrentItem(0);
-                    getAllWorks();
+
                     spinner.setVisibility(View.VISIBLE);
-                    Toast.makeText(Register.this, ""+nameOfWork+id, Toast.LENGTH_SHORT).show();
+
                 }else if (itemId == R.id.customer){
                     binding.viewPagerRegister.setCurrentItem(1);
                     spinner.setVisibility(View.INVISIBLE);
@@ -222,30 +220,5 @@ public class Register extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-    //   Get All Works
-    void getAllWorks(){
-        StringRequest stringRequest = new StringRequest(GET, "https://studentucas.awamr.com/api/all/works", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-                    JSONObject jsonObject1;
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        jsonObject1=jsonArray.getJSONObject(i);
-                        nameOfWork = jsonObject1.getString("name");
-                        id = jsonObject1.getString("id");
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-            }
-        });
-        requestQueue.add(stringRequest);
-    }
 }
