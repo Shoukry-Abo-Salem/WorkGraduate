@@ -62,5 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 binding.bottomNavHome.getMenu().getItem(position).setChecked(false);
             }
         });
+        binding.viewPagerHome.setUserInputEnabled(false);
     }
 }

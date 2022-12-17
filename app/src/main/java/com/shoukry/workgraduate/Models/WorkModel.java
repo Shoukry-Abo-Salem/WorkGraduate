@@ -3,9 +3,9 @@ package com.shoukry.workgraduate.Models;
 public class WorkModel {
     private int id;
     private String name;
-    private String photo;
+    private int photo;
 
-    public WorkModel(int id, String name, String photo) {
+    public WorkModel(int id, String name, int photo) {
         this.id = id;
         this.name = name;
         this.photo = photo;
@@ -27,11 +27,11 @@ public class WorkModel {
         this.name = name;
     }
 
-    public String getPhoto() {
+    public int getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(int photo) {
         this.photo = photo;
     }
 }

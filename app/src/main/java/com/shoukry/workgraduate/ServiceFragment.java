@@ -18,6 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.shoukry.workgraduate.AdapterFragments.WorkAdapter;
+import com.shoukry.workgraduate.Models.WorkModel;
 import com.shoukry.workgraduate.databinding.FragmentOrdersBinding;
 import com.shoukry.workgraduate.databinding.FragmentServiceBinding;
 
@@ -25,14 +27,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class ServiceFragment extends Fragment {
 
     SharedPreferences shared;
     RequestQueue requestQueue;
     String nameOfWork;
-    String id;
-
+    int id;
+    FragmentServiceBinding binding;
+    ArrayList<WorkModel> arrayList;
+    WorkAdapter workAdapter;
     // TODO: Rename parameter arguments, choose names that match
 
 
@@ -51,7 +57,7 @@ public class ServiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         requestQueue = Volley.newRequestQueue(getContext());
-        FragmentServiceBinding binding = FragmentServiceBinding.inflate(inflater,container,false);
+        binding = FragmentServiceBinding.inflate(inflater,container,false);
 
         shared = PreferenceManager.getDefaultSharedPreferences(getContext());
 
@@ -81,7 +87,13 @@ public class ServiceFragment extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         jsonObject1=jsonArray.getJSONObject(i);
                         nameOfWork = jsonObject1.getString("name");
-                        id = jsonObject1.getString("id");
+                        id = jsonObject1.getInt("id");
+                        arrayList = new ArrayList<>();
+                        WorkModel workModel = new WorkModel(id,nameOfWork,R.drawable.work_1);
+                        arrayList.add(workModel);
+                        workAdapter = new WorkAdapter(getActivity(),arrayList);
+                        binding.recyclerViewService.setAdapter(workAdapter);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
