@@ -18,7 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.shoukry.workgraduate.AdapterFragments.ProviderAdapter;
 import com.shoukry.workgraduate.AdapterFragments.WorkAdapter;
+import com.shoukry.workgraduate.Models.ProviderModel;
 import com.shoukry.workgraduate.Models.WorkModel;
 import com.shoukry.workgraduate.databinding.FragmentOrdersBinding;
 import com.shoukry.workgraduate.databinding.FragmentServiceBinding;
@@ -37,8 +39,11 @@ public class ServiceFragment extends Fragment {
     String nameOfWork;
     int id;
     FragmentServiceBinding binding;
-    ArrayList<WorkModel> arrayList;
+    ArrayList<WorkModel> arrayList1;
+    ArrayList<ProviderModel> arrayList2;
     WorkAdapter workAdapter;
+    ProviderAdapter providerAdapter;
+
     // TODO: Rename parameter arguments, choose names that match
 
 
@@ -67,9 +72,9 @@ public class ServiceFragment extends Fragment {
         if (loginCustomer == 1){
             binding.recyclerViewOrder.setVisibility(View.INVISIBLE);
             getAllWorks();
-            Toast.makeText(getContext(), ""+nameOfWork+id, Toast.LENGTH_SHORT).show();
         }else if (loginProvider == 1){
             binding.recyclerViewService.setVisibility(View.VISIBLE);
+            getAllDeliver();
         }
 
         return binding.getRoot();
@@ -88,11 +93,48 @@ public class ServiceFragment extends Fragment {
                         jsonObject1=jsonArray.getJSONObject(i);
                         nameOfWork = jsonObject1.getString("name");
                         id = jsonObject1.getInt("id");
-                        arrayList = new ArrayList<>();
+                        arrayList1 = new ArrayList<>();
                         WorkModel workModel = new WorkModel(id,nameOfWork,R.drawable.work_1);
-                        arrayList.add(workModel);
-                        workAdapter = new WorkAdapter(getActivity(),arrayList);
+                        arrayList1.add(workModel);
+                        workAdapter = new WorkAdapter(getActivity(),arrayList1);
                         binding.recyclerViewService.setAdapter(workAdapter);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(stringRequest);
+    }
+
+    //  Get All Deliver
+    void getAllDeliver(){
+        StringRequest stringRequest = new StringRequest(GET, "https://studentucas.awamr.com/api/home/deliver", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    JSONObject jsonObject1;
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        jsonObject1=jsonArray.getJSONObject(i);
+                        int id = jsonObject1.getInt("id");
+                        int userId = jsonObject1.getInt("user_id");
+                        int work_Id = jsonObject1.getInt("work_id");
+                        String details = jsonObject1.getString("details_address");
+                        String lat = jsonObject1.getString("lat");
+                        String _long = jsonObject1.getString("long");
+                        arrayList2 = new ArrayList<>();
+                        ProviderModel providerModel = new ProviderModel(id,userId,details,lat,_long,work_Id);
+                        arrayList2.add(providerModel);
+                        providerAdapter = new ProviderAdapter(getActivity(),arrayList2);
+                        binding.recyclerViewOrder.setAdapter(workAdapter);
 
                     }
                 } catch (JSONException e) {
