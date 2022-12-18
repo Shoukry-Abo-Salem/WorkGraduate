@@ -2,69 +2,54 @@ package com.shoukry.workgraduate.Models;
 
 public class ProviderModel {
 
-        private int id;
-        private int userId;
-        private String detailsAddress;
-        private String lat;
-        private String _long;
-        private int workId;
+    private String name,service;
+    private int id,img,userId;
 
-    public ProviderModel(int id, int userId, String detailsAddress, String lat, String _long, int workId) {
+    public ProviderModel(String name, String service, int id, int img, int userId) {
+        this.name = name;
+        this.service = service;
         this.id = id;
+        this.img = img;
         this.userId = userId;
-        this.detailsAddress = detailsAddress;
-        this.lat = lat;
-        this._long = _long;
-        this.workId = workId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
     }
 
     public int getId() {
-            return id;
-        }
+        return id;
+    }
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-        public int getUserId() {
-            return userId;
-        }
+    public int getImg() {
+        return img;
+    }
 
-        public void setUserId(int userId) {
-            this.userId = userId;
-        }
+    public void setImg(int img) {
+        this.img = img;
+    }
 
-        public String getDetailsAddress() {
-            return detailsAddress;
-        }
+    public int getUserId() {
+        return userId;
+    }
 
-        public void setDetailsAddress(String detailsAddress) {
-            this.detailsAddress = detailsAddress;
-        }
-
-        public String getLat() {
-            return lat;
-        }
-
-        public void setLat(String lat) {
-            this.lat = lat;
-        }
-
-        public String getLong() {
-            return _long;
-        }
-
-        public void setLong(String _long) {
-            this._long = _long;
-        }
-
-        public int getWorkId() {
-            return workId;
-        }
-
-        public void setWorkId(int workId) {
-            this.workId = workId;
-        }
-
-
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

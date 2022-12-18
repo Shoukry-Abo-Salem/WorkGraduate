@@ -37,7 +37,10 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
 
         ProviderModel providerModel = arrayList.get(position);
 
-        holder.binding.txtOrderId.setText(providerModel.getLong());
+        holder.binding.txtServiceType.setText(providerModel.getService());
+        holder.binding.txtUserName.setText(providerModel.getName());
+        holder.binding.txtOrderId.setText(String.valueOf(providerModel.getId()));
+        holder.binding.imageUser.setImageResource(providerModel.getImg());
     }
 
     @Override
