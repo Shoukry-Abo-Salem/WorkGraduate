@@ -16,6 +16,12 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.DetailsV
 
     Context context;
     ArrayList<DetailsModel> arrayList;
+
+    public DetailsAdapter(Context context, ArrayList<DetailsModel> arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+    }
+
     @NonNull
     @Override
     public DetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
