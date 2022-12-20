@@ -52,7 +52,11 @@ public class OrdersFragment extends Fragment {
         binding.tabLayoutService.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
                 binding.ordersViewPager.setCurrentItem(tab.getPosition());
+                if (position == 1){
+                   binding.ordersViewPager.setCurrentItem(arrayList.indexOf(0));
+                }
             }
 
             @Override
