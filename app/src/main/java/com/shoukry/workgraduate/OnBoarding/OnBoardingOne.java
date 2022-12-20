@@ -19,7 +19,7 @@ public class OnBoardingOne extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnNextPage.setOnClickListener(View ->{
-//            startActivity(new Intent(getApplicationContext(),));
+            startActivity(new Intent(getApplicationContext(),OnBoardingTow.class));
         });
     }
 }
