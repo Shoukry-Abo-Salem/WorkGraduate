@@ -135,9 +135,11 @@ public class Login extends AppCompatActivity {
                     try {
                         if (response.getBoolean("success") == true){
                             checkBox = findViewById(R.id.checkBox_Remember_me);
-                            if (checkBox.isChecked()){
                             shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                             editor = shared.edit();
+                            editor.putInt("provider",1);
+                            editor.commit();
+                            if (checkBox.isChecked()){
                             editor.putInt("provider",1);
                             editor.commit();
 //                            shared.getInt("provider",0);

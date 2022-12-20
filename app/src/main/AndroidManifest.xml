@@ -15,21 +15,21 @@
         android:theme="@style/Theme.WorkGraduate"
         tools:targetApi="31">
         <activity
-            android:name=".OnBoarding.OnBoardingThree"
+            android:name=".OnBoardingThree"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OnBoarding.OnBoardingTow"
+            android:name=".OnBoardingTow"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OnBoarding.OnBoardingOne"
+            android:name=".OnBoardingOne"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

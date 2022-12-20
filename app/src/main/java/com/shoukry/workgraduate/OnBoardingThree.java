@@ -1,4 +1,4 @@
-package com.shoukry.workgraduate.OnBoarding;
+package com.shoukry.workgraduate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,10 +25,11 @@ public class OnBoardingThree extends AppCompatActivity {
         shared = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = shared.edit();
 
-        binding.btnNextPage.setOnClickListener(View ->{
+        binding.btnNextPage3.setOnClickListener(View ->{
             editor.putInt("isBoarding",1);
             editor.commit();
             startActivity(new Intent(getApplicationContext(), Login.class));
+            finish();
         });
 
     }

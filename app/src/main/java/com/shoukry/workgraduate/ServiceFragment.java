@@ -98,8 +98,8 @@ public class ServiceFragment extends Fragment {
                         jsonObject1 = jsonArray.getJSONObject(i);
                         nameOfWork = jsonObject1.getString("name");
                         id = jsonObject1.getInt("id");
-                        arrayList1 = new ArrayList<>();
                         WorkModel workModel = new WorkModel(id, nameOfWork, R.drawable.work_1);
+                        arrayList1 = new ArrayList<>();
                         arrayList1.add(workModel);
                         workAdapter = new WorkAdapter(getActivity(), arrayList1);
                         binding.recyclerViewService.setAdapter(workAdapter);

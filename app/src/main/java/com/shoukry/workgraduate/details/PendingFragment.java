@@ -70,6 +70,7 @@ public class PendingFragment extends Fragment {
                         JSONObject jsonObject2 = jsonObject1.getJSONObject("work");
                         String service = jsonObject2.getString("name");
                         DetailsModel model = new DetailsModel(user_id,service);
+                        arrayList = new ArrayList<>();
                         arrayList.add(model);
                         DetailsAdapter adapter = new DetailsAdapter(getActivity(),arrayList);
                         binding.recyclerViewPending.setAdapter(adapter);

@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         binding.viewPagerHome.setAdapter(adapter);
 
 
-
         binding.bottomNavHome.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

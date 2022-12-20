@@ -46,7 +46,7 @@ public class OrdersFragment extends Fragment {
         arrayList.add(new UnderwayFragment());
 
         adapter = new LoginFragmentAdapter(getActivity(),arrayList);
-        binding.ordersViewPager.setAdapter(adapter);
+//        binding.re.setAdapter(adapter);
 
         binding = FragmentOrdersBinding.inflate(inflater,container,false);
         binding.tabLayoutService.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

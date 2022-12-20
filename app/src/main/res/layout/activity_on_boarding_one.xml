@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnBoarding.OnBoardingOne">
+    tools:context=".OnBoardingOne">
 
     <ImageView
         android:id="@+id/imageViewBoarding"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewBoarding" />
 
     <Button
-        android:id="@+id/btn_Next_Page"
+        android:id="@+id/btn_Next_Page1"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="next"

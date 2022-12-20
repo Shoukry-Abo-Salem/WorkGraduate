@@ -10,7 +10,6 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 
-import com.shoukry.workgraduate.OnBoarding.OnBoardingOne;
 import com.shoukry.workgraduate.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreen extends AppCompatActivity {
@@ -38,10 +37,11 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (boarding == 0){
-                    startActivity(new Intent(getApplicationContext(), OnBoardingOne.class));
-                }else if (boarding == 1){
-
+//                if (boarding == 0){
+//                    startActivity(new Intent(getApplicationContext(), OnBoardingOne.class));
+//                }else if (boarding == 1){
+//
+//                }
                     if (loginProvider == 1){
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finish();
@@ -50,12 +50,10 @@ public class SplashScreen extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         finish();
                         Toast.makeText(SplashScreen.this, "Customer"+loginCustomer, Toast.LENGTH_LONG).show();
+                    } else{
+                        startActivity(new Intent(getApplicationContext(),Login.class));
+                        finish();
                     }
-                }
-//                else{
-//                    startActivity(new Intent(getApplicationContext(),Login.class));
-//                    finish();
-//                }
             }
         },1500);
 
