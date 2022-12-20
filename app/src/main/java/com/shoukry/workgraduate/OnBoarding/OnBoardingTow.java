@@ -18,6 +18,7 @@ public class OnBoardingTow extends AppCompatActivity {
 
         binding.btnNextPage.setOnClickListener(View ->{
             startActivity(new Intent(getApplicationContext(),OnBoardingThree.class));
+            finish();
         });
 
     }
