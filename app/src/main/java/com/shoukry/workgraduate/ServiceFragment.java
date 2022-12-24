@@ -74,11 +74,14 @@ public class ServiceFragment extends Fragment {
         int loginProvider = shared.getInt("provider", 0);
         int loginCustomer = shared.getInt("customer", 0);
 
+        Toast.makeText(getActivity(), ""+loginProvider, Toast.LENGTH_SHORT).show();
         if (loginCustomer == 1) {
-            binding.recyclerViewOrder.setVisibility(View.INVISIBLE);
+            binding.recyclerViewOrder.setVisibility(View.GONE);
+            binding.recyclerViewService.setVisibility(View.VISIBLE);
             getAllWorks();
         } else if (loginProvider == 1) {
-            binding.recyclerViewService.setVisibility(View.VISIBLE);
+            binding.recyclerViewService.setVisibility(View.GONE);
+            binding.recyclerViewOrder.setVisibility(View.VISIBLE);
             getAllDeliver();
         }
 
@@ -103,7 +106,7 @@ public class ServiceFragment extends Fragment {
                         arrayList1.add(workModel);
                         workAdapter = new WorkAdapter(getActivity(), arrayList1);
                         binding.recyclerViewService.setAdapter(workAdapter);
-
+                        binding.recyclerViewService.setLayoutManager(new LinearLayoutManager(getActivity()));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

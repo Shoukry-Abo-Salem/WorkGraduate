@@ -149,7 +149,7 @@ public class Register extends AppCompatActivity {
                         if (response.getBoolean("success") == true){
 
                             Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Register.this,MainActivity.class));
+                            startActivity(new Intent(Register.this,Login.class));
                             finish();
                         }else{
                             Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -190,7 +190,7 @@ public class Register extends AppCompatActivity {
                     try {
                         if (response.getBoolean("success") == true){
                             Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Register.this,MainActivity.class));
+                            startActivity(new Intent(Register.this,Login.class));
                             finish();
                         }else{
                             Toast.makeText(Register.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
