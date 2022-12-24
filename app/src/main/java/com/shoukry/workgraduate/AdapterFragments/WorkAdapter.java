@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shoukry.workgraduate.Models.WorkModel;
 import com.shoukry.workgraduate.databinding.ServiceItemBinding;
+import com.shoukry.workgraduate.listeners.WorkClickListener;
 
 import java.util.ArrayList;
 
@@ -18,10 +20,12 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.WorkViewHolder
 
     Context context;
     ArrayList<WorkModel> arrayList;
+    private WorkClickListener workClickListener;
 
     public WorkAdapter(Context context, ArrayList<WorkModel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+//        this.workClickListener = workClickListener;
     }
 
     @NonNull
@@ -36,6 +40,12 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.WorkViewHolder
 
         holder.binding.imageWork1.setImageResource(workModel.getPhoto());
         holder.binding.txtNameWork.setText(workModel.getName());
+
+        holder.binding.getRoot().setOnClickListener(View ->{
+//            workClickListener.onItemClickListener(position,workModel);
+            Toast.makeText(context, "It's Work", Toast.LENGTH_SHORT).show();
+
+        });
     }
 
     @Override

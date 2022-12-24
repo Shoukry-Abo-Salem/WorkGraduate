@@ -50,7 +50,7 @@ public class PendingFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentPendingBinding.inflate(inflater);
         queue = Volley.newRequestQueue(getActivity());
-        arrayList = new ArrayList<>();
+//        arrayList = new ArrayList<>();
         pending();
         return binding.getRoot();
     }
@@ -86,11 +86,12 @@ public class PendingFragment extends Fragment {
 
             }
 
-        }){
+        })
+        {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
-                map.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5Nzc2N2JmYS1mZWVhLTQ0MTEtOWE0My0wYTliNzE4Y2YwZmEiLCJqdGkiOiI4ODcwN2ExMDVkZmEyZDk5NWNiZDhjM2IwM2U3ZjJhOWRlNjZlNDMwN2NlNTQ1MWFlNzM5MjMzMTk2Mzc5MDEyZTk4NmU0M2M3MDBiMzFjNiIsImlhdCI6MTY3MTQzNDIzOSwibmJmIjoxNjcxNDM0MjM5LCJleHAiOjE3MDI5NzAyMzksInN1YiI6IjE4Iiwic2NvcGVzIjpbXX0.sLwYTm4wAuQtCyDj_9Jgdem04fxJ5Zd61NeJgKeqz6GKb7HMwS4oGrOiS3BLf77WNCGqqASbVTxIL7q3T0PzY0nMKPPlGlwMOm9fhA4hMvQZcNbWsnjeunVAl4Ber-uXQpPX7eop-zVBaNukjTVDLPLE5Je44W-y8-jBbtHzvbPRFJFGiSqQKqM20Z_o96NebhYvvMM99MECXrnx3-ZyYvjYWzipQAj0DenJoK_yaY8vajt2rLf9HP50epmgg8F-mgTtl7O_R_mWUQJbMgEU5IuxfLqqMIV1sibxIyRhxvxWWC5KZYx17zpT7CmndmuOnfcKC4CLMSDCQQuivrVGZOHFepZDUSKGwHNTtwKwcZMpAJV3WzjGs2c5-gYaerz5hiwcdCIi8pscrwGJ4UvUikMr6X6_GDyzmt8o9cmDqXINPTHijHtXMaIyZgdAznyFf0phKSYAV3XGrNCJthscDlVRb-5T2YbVSt9hMA4SkIpYUWEc5PaoRHdZryEZ84MRJrDutLb_FwyF2JFKM7SFBZi4-ZAy-hD0V6OQcTrc6gj8kZhRY39ZR7xeOi15QC0IbnPhp9-8tzjYJDA0t1t1-E0ecIJtaYii3ff9vfy71xfLTVqXznFaWa1fnnKNxPOrlEFZoJWU_p6_l2vIqJV62iOspfeqBXwbKjvTIsAVNPI");
+                map.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5Nzc2N2JmYS1mZWVhLTQ0MTEtOWE0My0wYTliNzE4Y2YwZmEiLCJqdGkiOiJkMTAwZDQ5NGE0ZWY0MDI4MTYxMmQxN2EzMGE0NzhiZjY0OTg0YzNlOTYxMWQ2MjJhMzQ5MTNkZDljZDUzMWRhMGExOGNjMDI1YzNiNmZkZiIsImlhdCI6MTY3MDgyOTE5NSwibmJmIjoxNjcwODI5MTk1LCJleHAiOjE3MDIzNjUxOTUsInN1YiI6IjQiLCJzY29wZXMiOltdfQ.iUeujmzW9I5Ho40HKPQJCrGTVUrxwB7o0xozLGS2ClDxw95FYuMn0GxrwN5d630mE14HGkEvxkjip_FDEv2G0j8WVItjsvpqQsE19jbKJvxYImPr40_MI5vGO1Yf8yQZYLU2nGa4Isk0hx5saxsmY9Lf2U4PVGQjDTxuf5IfIN1e1wO1sPt9YLIAST8aXxq3j4vaYE68xw4xmXCithnzRfN5SyMWWj7hgnZ_aK8lqYG9Ato7jaqwlkOObXkkhfi01RQ4VmgNWNyDWEojLQXLNp_xiAKPF03h_OjFcHvN_YUADPZsc_BTpNg_gRiYHxhBr4Af9B_xX2EVwISjWAPt5Xog7KBNZu5hsEn3Qu9PV37l-Ymf6PflhBe2uL3P4Cq2PcZvSpYYCLXQh1F04RAx6CuoaoSMMnIX7hO-niM7NhlYCro5zQhiYKVgFm9a-gFN_F449zKtYRIpBOzAjpZF7aH7fCXcYAZCzLugKxNowiYCyyOMxQJki2-PPGa2VYOXMIGnsf4CUIYYFMtlFOxSVe0Da2dGA6CzKiw9RjcoOOKzFwPU0E8cjxEeLDCWOnXiXJ4ydadixFFe_RA-6cvIO15ftgLY4lg6nUzssEGapX7KA8iRGZo7bZRxrgbmbrzgvsC86ri_Xfsn7Ygx3SY8Gu3-1QH6qL0efoh1NEgfY4o");
                 return map;
             }
         };

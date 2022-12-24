@@ -3,6 +3,7 @@ package com.shoukry.workgraduate;
 import static com.android.volley.Request.Method.GET;
 import static com.android.volley.Request.Method.POST;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -27,6 +28,7 @@ import com.shoukry.workgraduate.Models.ProviderModel;
 import com.shoukry.workgraduate.Models.WorkModel;
 import com.shoukry.workgraduate.databinding.FragmentOrdersBinding;
 import com.shoukry.workgraduate.databinding.FragmentServiceBinding;
+import com.shoukry.workgraduate.listeners.WorkClickListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ServiceFragment extends Fragment {
+public class ServiceFragment extends Fragment implements WorkClickListener {
 
     SharedPreferences shared;
     RequestQueue requestQueue;
@@ -163,5 +165,11 @@ public class ServiceFragment extends Fragment {
             }
         };
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onItemClickListener(int position, WorkModel workModel) {
+//        startActivity(new Intent(getActivity(),));
+        Toast.makeText(getActivity(), "It's Work", Toast.LENGTH_SHORT).show();
     }
 }
