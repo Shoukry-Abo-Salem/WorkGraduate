@@ -104,8 +104,6 @@ public class Login extends AppCompatActivity {
 //                        binding.viewPager.setCurrentItem(1);
                     }
                 });
-
-
                 return false;
             }
         });
