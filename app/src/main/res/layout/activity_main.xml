@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/navigation" />
+        app:srcCompat="@drawable/navigation"
+        android:contentDescription="TODO" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager_Home"
@@ -35,9 +36,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/main_nav_menu"/>
+        app:menu="@menu/main_nav_menu">
 
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/fragmentContainerView3"-->
+<!--        android:name="com.shoukry.workgraduate.ServiceFragment"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/bottom_Nav_Home"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--         />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

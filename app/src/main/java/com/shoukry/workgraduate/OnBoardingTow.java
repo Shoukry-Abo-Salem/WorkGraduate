@@ -11,17 +11,14 @@ import com.shoukry.workgraduate.databinding.ActivityOnBoardingTowBinding;
 public class OnBoardingTow extends AppCompatActivity {
 
     ActivityOnBoardingTowBinding binding;
-    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        binding = ActivityOnBoardingTowBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_on_boarding_tow);
+        binding = ActivityOnBoardingTowBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        button = findViewById(R.id.btn_Next_Page2);
-       button.setOnClickListener(View ->{
+       binding.btnNextPage2.setOnClickListener(View ->{
             startActivity(new Intent(getApplicationContext(), OnBoardingThree.class));
-            finish();
         });
 
     }

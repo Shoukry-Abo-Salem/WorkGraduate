@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -34,15 +35,30 @@ import java.util.Map;
 
 public class PendingFragment extends Fragment {
 
+    public final static String ARG_TAB_NAME="tabName";
     FragmentPendingBinding binding;
     RequestQueue queue;
     ArrayList<DetailsModel> arrayList;
 
+
+    String tabName ;
+
+    public static PendingFragment newInstance(String tabName) {
+        PendingFragment fragment = new PendingFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_TAB_NAME, tabName);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (getArguments() != null) {
+            tabName = getArguments().getString(ARG_TAB_NAME);
+        }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,6 +78,7 @@ public class PendingFragment extends Fragment {
                 JSONObject jsonObject;
                 try {
                     jsonObject = new JSONObject(response);
+                    Toast.makeText(getActivity(), ""+jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                     JSONObject jsonObject1;
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -91,7 +108,7 @@ public class PendingFragment extends Fragment {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
-                map.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5Nzc2N2JmYS1mZWVhLTQ0MTEtOWE0My0wYTliNzE4Y2YwZmEiLCJqdGkiOiJkMTAwZDQ5NGE0ZWY0MDI4MTYxMmQxN2EzMGE0NzhiZjY0OTg0YzNlOTYxMWQ2MjJhMzQ5MTNkZDljZDUzMWRhMGExOGNjMDI1YzNiNmZkZiIsImlhdCI6MTY3MDgyOTE5NSwibmJmIjoxNjcwODI5MTk1LCJleHAiOjE3MDIzNjUxOTUsInN1YiI6IjQiLCJzY29wZXMiOltdfQ.iUeujmzW9I5Ho40HKPQJCrGTVUrxwB7o0xozLGS2ClDxw95FYuMn0GxrwN5d630mE14HGkEvxkjip_FDEv2G0j8WVItjsvpqQsE19jbKJvxYImPr40_MI5vGO1Yf8yQZYLU2nGa4Isk0hx5saxsmY9Lf2U4PVGQjDTxuf5IfIN1e1wO1sPt9YLIAST8aXxq3j4vaYE68xw4xmXCithnzRfN5SyMWWj7hgnZ_aK8lqYG9Ato7jaqwlkOObXkkhfi01RQ4VmgNWNyDWEojLQXLNp_xiAKPF03h_OjFcHvN_YUADPZsc_BTpNg_gRiYHxhBr4Af9B_xX2EVwISjWAPt5Xog7KBNZu5hsEn3Qu9PV37l-Ymf6PflhBe2uL3P4Cq2PcZvSpYYCLXQh1F04RAx6CuoaoSMMnIX7hO-niM7NhlYCro5zQhiYKVgFm9a-gFN_F449zKtYRIpBOzAjpZF7aH7fCXcYAZCzLugKxNowiYCyyOMxQJki2-PPGa2VYOXMIGnsf4CUIYYFMtlFOxSVe0Da2dGA6CzKiw9RjcoOOKzFwPU0E8cjxEeLDCWOnXiXJ4ydadixFFe_RA-6cvIO15ftgLY4lg6nUzssEGapX7KA8iRGZo7bZRxrgbmbrzgvsC86ri_Xfsn7Ygx3SY8Gu3-1QH6qL0efoh1NEgfY4o");
+                map.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5Nzc2N2JmYS1mZWVhLTQ0MTEtOWE0My0wYTliNzE4Y2YwZmEiLCJqdGkiOiI1MGEwMTJlZWM3NTMyODJlZjE1NDc5NDkyNGM2Y2E0YTNlYTdiZGY2MDBlY2RmMzQ0NDBhZmE1ODYxMTQ1OTQwY2U3MDExNTAzZjQ5ZDBkMyIsImlhdCI6MTY3MjI5NTY5OSwibmJmIjoxNjcyMjk1Njk5LCJleHAiOjE3MDM4MzE2OTksInN1YiI6IjE0Iiwic2NvcGVzIjpbXX0.doDJRm4YIzAB4YrIRNj25dXG3sHSA-7RBxyipjxynSpHZzOyxX5jrQqctjP44r2B6giyYj6Js05Sj5LGcQy2eW_xjHRkiH_rJjU-WFQQM9xIq2XBKFo3gIPsRB0EeB3h_PsVnFZZgBp_yWkSOJotE1r0bkJtAKXSH2rtuf_ajs1PxJE_fgENVTrd6RP4C1FaPNEH0wLMHfk0XuLkZm5g2XZyzwXxSyhaCaW1u7qvkRMOMWb-WKr-x2j0G5NsEHrW6Ipb3XXW-Y-wKwlE-fNR48_57UgXKSXdKLSJos4zLiUAStbw9za2G-jSi8_cTGf4pvnV-fGkw2t-2lTgEjbZ-htLDXauIU-w5n-mLbvODa5aXqM0TzfkhxfCKqk2Q_AToZjiLVD6Vut9oK9NTBQc0-ts_NDOYp7Lp0xYe3Jz472mZgIzIETMtiqNC9_lr6zpptcH24DuhY-R06lrCTKm9xAulNxCEsD8V9NRWHUM1_GGnM3oft_Ovy74Ui09SLT0K-wNm6Am7UhXF4rgFAOO9_K9A31qowL40cp0y9FgamwNn3vgEF8lsBSBVNdM351tJnRDB3iCNjfUYjrywe5g9mGfAtOL-ERd7R0VLW_Z2NYyXrPkWA4sMLJ3UlzY3_-VzZVpzIS79kXOhZ49pxBR6rq4pQXWg-TC_p9YBtf7IzU");
                 return map;
             }
         };

@@ -31,20 +31,20 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.DetailsV
     @Override
     public void onBindViewHolder(@NonNull DetailsViewHolder holder, int position) {
         DetailsModel detailsModel = arrayList.get(position);
-
+        holder.binding.txtServiceType.setText(detailsModel.getServiceType());
+        holder.binding.txtOrderNumber.setText(String.valueOf(detailsModel.getOrderNumber()));
 
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return 5;
     }
 
     class DetailsViewHolder extends RecyclerView.ViewHolder {
         OrderTowItemBinding binding;
         public DetailsViewHolder(OrderTowItemBinding binding) {
             super(binding.getRoot());
-
             this.binding = binding;
         }
     }

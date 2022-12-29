@@ -1,7 +1,9 @@
 package com.shoukry.workgraduate;
 
 import android.content.Intent;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +18,11 @@ public class OnBoardingOne extends AppCompatActivity {
         binding = ActivityOnBoardingOneBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnNextPage1.setOnClickListener(View ->{
-            startActivity(new Intent(getApplicationContext(), OnBoardingTow.class));
-            finish();
+        binding.btnNextPage1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), OnBoardingTow.class));
+            }
         });
     }
 }

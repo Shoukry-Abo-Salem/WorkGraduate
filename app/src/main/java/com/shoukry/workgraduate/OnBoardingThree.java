@@ -29,7 +29,6 @@ public class OnBoardingThree extends AppCompatActivity {
             editor.putInt("isBoarding",1);
             editor.commit();
             startActivity(new Intent(getApplicationContext(), Login.class));
-            finish();
         });
 
     }

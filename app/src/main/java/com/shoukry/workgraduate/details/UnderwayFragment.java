@@ -16,6 +16,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.shoukry.workgraduate.AdapterFragments.DetailsAdapter;
 import com.shoukry.workgraduate.Models.DetailsModel;
 import com.shoukry.workgraduate.R;
@@ -36,6 +37,7 @@ public class UnderwayFragment extends Fragment {
     ArrayList<DetailsModel> arrayList;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        queue = Volley.newRequestQueue(getActivity());
         super.onCreate(savedInstanceState);
     }
 
