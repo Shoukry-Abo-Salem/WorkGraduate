@@ -124,7 +124,6 @@ public class OrdersFragment extends Fragment {
 
             }
         }).attach();
-
     }
 
 
