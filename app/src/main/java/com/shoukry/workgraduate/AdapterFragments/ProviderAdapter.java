@@ -10,10 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shoukry.workgraduate.ActivityDetailsOrder;
 import com.shoukry.workgraduate.Models.ProviderModel;
 import com.shoukry.workgraduate.Models.WorkModel;
 import com.shoukry.workgraduate.R;
 import com.shoukry.workgraduate.databinding.OrderItemBinding;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,15 +44,20 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         holder.binding.txtServiceType.setText(providerModel.getService());
         holder.binding.txtUserName.setText(providerModel.getName());
         holder.binding.txtOrderId.setText(String.valueOf(providerModel.getId()));
-        holder.binding.imageUser.setImageResource(providerModel.getImg());
 
+        Picasso.get().load(providerModel.getImg()).placeholder(R.drawable.imag_hint).into(holder.binding.imageWorkProvider);
+
+        holder.itemView.setOnClickListener(View ->{
+
+            context.startActivity(new Intent(context, ActivityDetailsOrder.class)
+                    .putExtra("name",providerModel.getName())
+                    .putExtra("img",providerModel.getImg()));
+        });
         holder.binding.btnDetails.setOnClickListener(View ->{
-            Intent intent = new Intent();
-            Toast.makeText(context, "Provider Clicked", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("name",providerModel.getName());
-//            intent.putExtra("image",providerModel.getImg());
-//            intent.putExtra("location",providerModel.);
-//            intent.putExtra("",providerModel.getName());
+
+            context.startActivity(new Intent(context, ActivityDetailsOrder.class)
+                    .putExtra("name",providerModel.getName())
+                    .putExtra("img",providerModel.getImg()));
         });
     }
 

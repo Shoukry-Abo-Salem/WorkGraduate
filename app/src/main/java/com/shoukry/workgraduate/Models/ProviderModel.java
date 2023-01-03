@@ -2,14 +2,13 @@ package com.shoukry.workgraduate.Models;
 
 public class ProviderModel {
 
-    private String name,service;
-    private int id,img,userId;
+    private String name,service,img;
+    private int id,userId;
 
-    public ProviderModel(String name, String service, int id, int img, int userId) {
+    public ProviderModel(String name, String service, int id, int userId) {
         this.name = name;
         this.service = service;
         this.id = id;
-        this.img = img;
         this.userId = userId;
     }
 
@@ -37,11 +36,11 @@ public class ProviderModel {
         this.id = id;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 

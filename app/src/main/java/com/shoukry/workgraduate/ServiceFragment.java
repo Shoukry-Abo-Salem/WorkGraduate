@@ -132,6 +132,7 @@ public class ServiceFragment extends Fragment implements WorkClickListener {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                     JSONObject jsonObject1;
+                    ProviderModel providerModel;
                     for (int i = 0; i < jsonArray.length(); i++) {
                         jsonObject1 = jsonArray.getJSONObject(i);
                         int userId = jsonObject1.getInt("user_id");
@@ -141,7 +142,7 @@ public class ServiceFragment extends Fragment implements WorkClickListener {
                         String W_name = jsonObjectWork.getString("name");
                         String U_name = jsonObjectUser.getString("name");
                         arrayList2 = new ArrayList<>();
-                        ProviderModel providerModel = new ProviderModel(U_name, W_name, id, R.drawable.smal_user_icon, userId);
+                        providerModel = new ProviderModel(U_name, W_name, id, userId);
                         arrayList2.add(providerModel);
                         providerAdapter = new ProviderAdapter(getActivity(), arrayList2);
                         binding.recyclerViewOrder.setAdapter(providerAdapter);

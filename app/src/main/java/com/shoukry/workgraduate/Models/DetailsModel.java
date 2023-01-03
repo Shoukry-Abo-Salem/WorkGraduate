@@ -3,11 +3,19 @@ package com.shoukry.workgraduate.Models;
 public class DetailsModel {
 
     private int orderNumber;
-    private String serviceType ;
+    private String serviceType,time;
 
     public DetailsModel(int orderNumber, String serviceType) {
         this.orderNumber = orderNumber;
         this.serviceType = serviceType;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public int getOrderNumber() {

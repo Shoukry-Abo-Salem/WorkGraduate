@@ -17,6 +17,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.shoukry.workgraduate.AdapterFragments.DetailsAdapter;
 import com.shoukry.workgraduate.Models.DetailsModel;
 import com.shoukry.workgraduate.R;
@@ -46,6 +47,7 @@ public class CompletedFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentCompletedBinding.inflate(inflater);
+        queue = Volley.newRequestQueue(getActivity());
         completed();
         return binding.getRoot();
     }

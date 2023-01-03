@@ -38,7 +38,7 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.DetailsV
 
     @Override
     public int getItemCount() {
-        return 5;
+        return arrayList.size();
     }
 
     class DetailsViewHolder extends RecyclerView.ViewHolder {
