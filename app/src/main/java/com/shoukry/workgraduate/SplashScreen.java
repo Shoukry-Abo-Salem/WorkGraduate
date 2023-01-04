@@ -31,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
         int boarding = shared.getInt("isBoarding",0);
 //        editor.remove("provider");
 //        editor.commit();
-        Toast.makeText(SplashScreen.this, ""+boarding, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(SplashScreen.this, ""+boarding, Toast.LENGTH_SHORT).show();
 
 
         new Handler().postDelayed(new Runnable() {

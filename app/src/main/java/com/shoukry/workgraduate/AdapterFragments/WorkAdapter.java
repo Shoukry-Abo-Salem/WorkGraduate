@@ -1,6 +1,7 @@
 package com.shoukry.workgraduate.AdapterFragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shoukry.workgraduate.ChoiceCard;
 import com.shoukry.workgraduate.Models.WorkModel;
 import com.shoukry.workgraduate.databinding.ServiceItemBinding;
 import com.shoukry.workgraduate.listeners.WorkClickListener;
@@ -44,7 +46,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.WorkViewHolder
         holder.binding.getRoot().setOnClickListener(View ->{
 //            workClickListener.onItemClickListener(position,workModel);
             Toast.makeText(context, "It's Work", Toast.LENGTH_SHORT).show();
-
+            context.startActivity(new Intent(context, ChoiceCard.class));
         });
     }
 

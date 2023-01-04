@@ -38,8 +38,6 @@ public class PendingFragment extends Fragment {
     FragmentPendingBinding binding;
     RequestQueue queue;
     ArrayList<DetailsModel> arrayList;
-
-
     String tabName ;
 
     public static PendingFragment newInstance(String tabName) {
@@ -57,7 +55,6 @@ public class PendingFragment extends Fragment {
             tabName = getArguments().getString(ARG_TAB_NAME);
         }
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
