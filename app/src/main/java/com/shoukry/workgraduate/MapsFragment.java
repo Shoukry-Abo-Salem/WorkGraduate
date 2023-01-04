@@ -41,8 +41,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback{
 
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+            LatLng sydney = new LatLng(100, 150);
+            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Gaza"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         }
     };
@@ -85,13 +85,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback{
         switch (requestCode) {
             case REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    fetchLastLocation();
+                    getLocation();
                 }
                 break;
         }
     }
 
-    private void fetchLastLocation() {
+    private void getLocation() {
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
