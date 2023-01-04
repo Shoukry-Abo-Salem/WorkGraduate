@@ -35,7 +35,8 @@ public class ChoiceCard extends AppCompatActivity {
         });
 
         binding.btnNext.setOnClickListener(View ->{
-            startActivity(new Intent(getApplicationContext(),CardInfo.class));
+            startActivity(new Intent(getApplicationContext(),CardInfo.class)
+                    .putExtra("details",binding.editeTxtDetailsProblem.getText().toString()));
         });
 
 
