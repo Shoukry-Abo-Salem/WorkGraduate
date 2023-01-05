@@ -69,8 +69,6 @@ public class Login extends AppCompatActivity {
 //        });
 
 
-
-
         binding.loginNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

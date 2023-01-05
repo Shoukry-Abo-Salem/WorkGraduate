@@ -89,14 +89,10 @@ public class Register extends AppCompatActivity {
                     spinner = findViewById(R.id.main_spinner);
                 if (itemId == R.id.provider){
                     binding.viewPagerRegister.setCurrentItem(0);
-
                     spinner.setVisibility(View.VISIBLE);
-
                 }else if (itemId == R.id.customer){
                     binding.viewPagerRegister.setCurrentItem(1);
                     spinner.setVisibility(View.INVISIBLE);
-
-//                    arrayListSpinner.add(nameOfWork);
                 }
 
                 signUp = findViewById(R.id.btn_SignUp);
